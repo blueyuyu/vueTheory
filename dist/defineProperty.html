@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=script, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <script>
+        let data = {
+            value: 'hello'
+        }
+        
+        // 
+        function defineReactive(obj,key,val,cb){
+            Object.defineProperty(obj,key,{
+            get(){
+                return val
+            },
+            set(newValue){
+                // data.value = newValue 不可以用，会死循环
+               val = newValue
+               cb && cb(val)
+            }
+        })
+        }
+
+
+        // 数据驱动视图
+        // let curValue = data.value
+        const input = document.querySelector('input')
+        input.value = data.value
+        input.addEventListener('change',(e)=>{
+            data.value = e.target.value
+            // console.log('curValue',curValue);
+        })
+
+
+       defineReactive(data,'value',data.value,(newValue)=>{
+            input.value = newValue
+        })       
+        // Object.defineProperty(data,'value',{
+        //     get(){
+        //         return curValue
+        //     },
+        //     set(newValue){
+        //         // data.value = newValue 不可以用，会死循环
+        //        curValue = newValue
+        //        input.value = curValue
+        //     }
+        // })
+
+
+
+    </script>
+</body>
+</html>
