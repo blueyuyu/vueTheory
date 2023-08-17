@@ -25,9 +25,22 @@
       message: 'hello'
       }
     },
-   
+    watch: {
+      a(){
+        console.log('watch a')
+      },
+    }
+
    })
 
+   // 观察
+   vm.$watch('message',(newValue)=>{
+    console.log('$watch dist index',newValue);
+    
+   })
+
+   vm.a = 2
+   vm.message = 'aaaaaa'
   </script>
 </body>
 </html>
