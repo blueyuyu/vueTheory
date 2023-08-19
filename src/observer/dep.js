@@ -1,5 +1,6 @@
 export default class Dep {
     subs = [] // 存放当前的依赖 watcher 实例
+    static target = null // 用于存放当前属性
     constructor(){
 
     }
@@ -9,15 +10,14 @@ export default class Dep {
 
     // 收集依赖
     depend(){
-        if(Dep.target){
+        if(Dep.target && !this.subs.includes(Dep.target)){
             this.subs.push(Dep.target)
         }
     }
-
     // 通知依赖
-    notify(newValue,oldValue){
+    notify(){
         for (const watcher of this.subs) {
-            watcher.update(newValue,oldValue)
+            watcher.update()
         }
     }
 }

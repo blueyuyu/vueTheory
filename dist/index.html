@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <!-- 引入 vue.js，将会绑定到 window-->
-  <script src="./vue.js"></script>
-  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.9/compiler-sfc.js"></script> -->
-  <script>
-   const vm = new Vue({
-    el: '#app',
-    name: 'app',
-    data:function(){
-      return {
-        a:{
-          b:{
-            c:1
-          }
-      },
-      arr: [1,2,3,4],
-      message: 'hello'
-      }
-    },
-    watch: {
-      a(){
-        console.log('watch a')
-      },
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 引入 vue.js，将会绑定到 window-->
+    <script src="./vue.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.9/compiler-sfc.js"></script> -->
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        name: "app",
+        data: function () {
+          return {
+            // a: 20,
+            // b: {
+            //   b1: 20,
+            // },
+            a:{
+              b:{
+                c:30
+              }
+            },
+            arr: [{ id: 1 }, { id: 2 }],
+            message: "hello",
+            num1: 20,
+            num2: 40,
+          };
+        },
+        watch: {
+          // b(newValue,oldValue) {
+          //   console.log("watch b",newValue,oldValue);
+          // },
+          // arr(){
+          //   console.log('watch arr');
 
-   })
+          // },
+          a(val,oldValue){
+            console.log(`newValue ${val} ,oldValue ${oldValue}`);
+            
+          },
+          "a.b.c"() {
+            console.log("watch a.b.c");
+          },
+          "a.b"() {
+            console.log("watch a.b");
+          },
+        },
+        // computed: {
+        //   sum() {
+        //     console.log('计算属性');
 
-   // 观察
-   vm.$watch('message',(newValue)=>{
-    console.log('$watch dist index',newValue);
-    
-   })
+        //     return this.num1 + this.num2;
+        //   },
+        // },
+      });
 
-   vm.a = 2
-   vm.message = 'aaaaaa'
-  </script>
-</body>
+      // 观察
+      // vm.$watch("message", (newValue) => {
+      //   // console.log("$watch dist index", newValue);
+      // });
+
+      // 此处代码默认为深度监听
+      // vm.a = 2;
+      // vm.message = "aaaaaa";
+    </script>
+  </body>
 </html>
