@@ -78,7 +78,7 @@ export default class watcher {
     this.value = this.get()
 
     if(this.value !== oldValue){
-      this.cb && this.cb.call(this.vm,value,oldValue)
+      this.cb && this.cb.call(this.vm,this.value,oldValue)
     }
   }
 }

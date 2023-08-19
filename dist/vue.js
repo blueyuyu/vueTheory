@@ -231,7 +231,7 @@
         // 新的值，获取并且覆盖
         this.value = this.get();
         if (this.value !== oldValue) {
-          this.cb && this.cb.call(this.vm, value, oldValue);
+          this.cb && this.cb.call(this.vm, this.value, oldValue);
         }
       }
     }

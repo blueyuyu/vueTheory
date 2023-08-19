@@ -37,17 +37,16 @@
           // },
           // arr(){
           //   console.log('watch arr');
-
           // },
           a(val,oldValue){
             console.log(`newValue ${val} ,oldValue ${oldValue}`);
             
           },
-          "a.b.c"() {
-            console.log("watch a.b.c");
-          },
           "a.b"() {
             console.log("watch a.b");
+          },
+          'a.b.c'(newValue, oldValue) {
+            console.log('watch a.b.c!', newValue, oldValue)
           },
         },
         // computed: {
